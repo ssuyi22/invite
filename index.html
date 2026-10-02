@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>☕ Morning Coffee Club — 조찬에 초대합니다</title>
+
+<!-- 카카오톡 / 링크 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="☕ Morning Coffee Club — 조찬에 초대합니다">
+<meta property="og:description" content="10/30(금) 오전 8시, 을지로입구 아티제. '커피 한 잔의 여유를 아는 품격 있는 여자~' CEO처럼 조찬을 즐긴 후 각자의 회사로 출근.">
+<meta name="description" content="10/30(금) 오전 8시, 을지로입구 아티제. '커피 한 잔의 여유를 아는 품격 있는 여자~' CEO처럼 조찬을 즐긴 후 각자의 회사로 출근">
+<meta name="theme-color" content="#2e211a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+  :root {
+    --bg: #2e211a;
+    --paper: #f4e8c8;
+    --ink: #3a2a1f;
+    --muted: #8a7456;
+    --blue: #2f5d8a;
+    --line: #d9c79c;
+    --serif: "Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --sans: "Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    background: var(--paper);
+    border-radius: 6px;
+    padding: 30px 28px 24px;
+    text-align: center;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  }
+
+  /* cup */
+  .cup { width: 64px; height: 64px; margin: 0 auto 6px; display: block; }
+  .steam path {
+    fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round;
+    stroke-dasharray: 14; animation: steam 3s ease-in-out infinite;
+    opacity: .0;
+  }
+  .steam path:nth-child(2) { animation-delay: .5s; }
+  .steam path:nth-child(3) { animation-delay: 1s; }
+  @keyframes steam {
+    0%   { stroke-dashoffset: 14; opacity: 0; transform: translateY(4px); }
+    40%  { opacity: .9; }
+    100% { stroke-dashoffset: -14; opacity: 0; transform: translateY(-4px); }
+  }
+
+  .club {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .32em;
+    padding-left: .32em;
+    color: var(--blue);
+  }
+  .to {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  h1 {
+    margin-top: 22px;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 31px;
+    letter-spacing: -.03em;
+    line-height: 1.25;
+  }
+  .lead {
+    margin-top: 16px;
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.85;
+  }
+
+  /* ticket divider */
+  .divider {
+    position: relative;
+    margin: 26px -28px 22px;
+    border-top: 2px dashed var(--line);
+  }
+  .divider::before, .divider::after {
+    content: "";
+    position: absolute;
+    top: -11px;
+    width: 20px; height: 20px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .divider::before { left: -10px; }
+  .divider::after  { right: -10px; }
+
+  .info { text-align: left; display: grid; gap: 9px; padding: 0 4px; }
+  .row { display: flex; align-items: baseline; gap: 14px; }
+  .row dt {
+    flex: 0 0 52px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+  .row dd { font-size: 16px; font-weight: 500; }
+  .dress { margin-top: 14px; font-size: 13px; color: var(--muted); text-align: left; padding: 0 4px; }
+  .dress b { color: var(--ink); font-weight: 600; }
+
+  /* timeline */
+  .tl {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 2px;
+  }
+  .node { flex: 0 0 auto; text-align: left; min-width: 74px; }
+  .node.end { text-align: right; }
+  .node .t { display: block; font-size: 15px; font-weight: 600; }
+  .node .l { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; transition: color .4s; }
+  .node.end .t, .node.end .l { transition: color .4s, opacity .4s; }
+  .node.end { opacity: .45; transition: opacity .4s; }
+
+  .track {
+    position: relative;
+    flex: 1;
+    height: 2px;
+    margin-top: 36px;
+    background: var(--line);
+    border-radius: 2px;
+  }
+  .fill {
+    position: absolute; inset: 0 auto 0 0;
+    width: 0;
+    background: var(--blue);
+    border-radius: 2px;
+  }
+  .office {
+    position: absolute;
+    right: -4px; bottom: 1px;
+    width: 26px; height: 34px;
+  }
+  .runner {
+    position: absolute;
+    left: 0; bottom: 1px;
+    width: 24px; height: 36px;
+    margin-left: -12px;
+  }
+  .worker { width: 100%; height: 100%; overflow: visible; display: block; }
+  .leg, .arm { transform-origin: 13px 22px; }
+  .arm { transform-origin: 13px 13px; }
+
+  .accepted .fill   { width: 100%; transition: width 1.8s linear; }
+  .accepted .runner { left: 100%; transition: left 1.8s linear, opacity .35s ease 1.5s; opacity: 0; }
+  .accepted .node.end { opacity: 1; transition-delay: 1.7s; }
+  .accepted .node.end .t { color: var(--blue); transition-delay: 1.7s; }
+
+  .walking .worker { animation: bob .36s ease-in-out infinite; }
+  .walking .leg.a  { animation: stepA .72s ease-in-out infinite; }
+  .walking .leg.b  { animation: stepB .72s ease-in-out infinite; }
+  .walking .arm    { animation: swing .72s ease-in-out infinite; }
+  .walking .tail   { animation: tail .36s ease-in-out infinite alternate; }
+  @keyframes tail  { from { transform: rotate(-8deg); } to { transform: rotate(10deg); } }
+  @keyframes bob   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
+  @keyframes stepA { 0%,100% { transform: rotate(-30deg); } 50% { transform: rotate(30deg); } }
+  @keyframes stepB { 0%,100% { transform: rotate(30deg); }  50% { transform: rotate(-30deg); } }
+  @keyframes swing { 0%,100% { transform: rotate(14deg); }  50% { transform: rotate(-14deg); } }
+
+  /* action */
+  .action { margin-top: 26px; min-height: 52px; }
+  .accept {
+    width: 100%;
+    border: 0;
+    background: var(--blue);
+    color: var(--paper);
+    font: 600 17px var(--sans);
+    padding: 15px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .15s, background .2s;
+  }
+  .accept:hover { background: #274e75; }
+  .accept:active { transform: scale(.97); }
+  .accept:focus-visible, .share:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  .done { display: none; }
+  .accepted .accept { display: none; }
+  .accepted .done { display: block; animation: pop .5s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: none; } }
+  .done p { font-family: var(--serif); font-size: 18px; font-weight: 700; line-height: 1.5; }
+  .done small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); font-family: var(--sans); font-weight: 400; }
+  .share {
+    margin-top: 14px;
+    border: 1.5px solid var(--blue);
+    background: transparent;
+    color: var(--blue);
+    font: 600 14px var(--sans);
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .bye { margin-top: 20px; font-family: var(--serif); font-size: 14px; color: var(--muted); }
+
+  @media (max-width: 360px) {
+    .card { padding: 26px 20px 20px; }
+    .divider { margin-left: -20px; margin-right: -20px; }
+    h1 { font-size: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .steam path { animation: none; opacity: .6; }
+    .walking .worker, .walking .leg, .walking .arm, .walking .tail { animation: none; }
+    .accepted .fill, .accepted .runner, .accepted .node.end, .accepted .node.end .t { transition-duration: .01s; transition-delay: 0s; }
+    .accepted .done { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<main class="card" id="card">
+  <svg class="cup" viewBox="0 0 64 64" aria-hidden="true">
+    <g class="steam">
+      <path d="M22 18c-3-3 3-5 0-9"/>
+      <path d="M32 18c-3-3 3-5 0-9"/>
+      <path d="M42 18c-3-3 3-5 0-9"/>
+    </g>
+    <path d="M12 26h34v12a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z" fill="#fff8e6" stroke="#3a2a1f" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M46 29h4a6 6 0 0 1 0 12h-5" fill="none" stroke="#3a2a1f" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M12 33h34" stroke="#2f5d8a" stroke-width="3"/>
+    <path d="M8 56h42" stroke="#3a2a1f" stroke-width="2.4" stroke-linecap="round"/>
+  </svg>
+
+  <div class="club">MORNING CLUB</div>
+  <p class="to">안 본 지 너무 오래된 관계자 1인에게</p>
+
+  <h1>조찬에 초대합니다</h1>
+  <p class="lead">
+    빵 한 조각과(한 조각은 아닐 예정)<br>
+    커피 한 잔 하고<br>
+    각자의 회사로<br>
+    출근하는 아침
+  </p>
+
+  <div class="divider" role="presentation"></div>
+
+  <dl class="info">
+    <div class="row"><dt>DATE</dt><dd>10.30 (금)</dd></div>
+    <div class="row"><dt>TIME</dt><dd>08:00 AM</dd></div>
+    <div class="row"><dt>PLACE</dt><dd>을지로입구 아티제</dd></div>
+  </dl>
+  <p class="dress">Dress code : <b>출근하는 사람</b></p>
+
+  <div class="tl" aria-label="08시 조찬 시작, 08시 40분 출근">
+    <div class="node"><span class="t">08:00</span><span class="l">Breakfast</span></div>
+    <div class="track">
+      <div class="fill"></div>
+      <svg class="office" viewBox="0 0 26 34" aria-hidden="true">
+        <rect x="3" y="3" width="20" height="31" rx="1.5" fill="#b9a67d"/>
+        <rect x="6" y="7" width="4" height="4" fill="#f4e8c8"/><rect x="12" y="7" width="4" height="4" fill="#f4e8c8"/><rect x="18" y="7" width="3" height="4" fill="#f4e8c8"/>
+        <rect x="6" y="14" width="4" height="4" fill="#f4e8c8"/><rect x="12" y="14" width="4" height="4" fill="#f4e8c8"/><rect x="18" y="14" width="3" height="4" fill="#f4e8c8"/>
+        <rect x="6" y="21" width="4" height="4" fill="#f4e8c8"/><rect x="12" y="21" width="4" height="4" fill="#f4e8c8"/><rect x="18" y="21" width="3" height="4" fill="#f4e8c8"/>
+        <rect x="10" y="27" width="7" height="7" fill="#2f5d8a"/>
+      </svg>
+      <div class="runner" id="runner">
+        <svg class="worker" viewBox="0 0 24 36" aria-hidden="true">
+          <!-- ponytail -->
+          <g class="tail" style="transform-origin:11px 5px"><path d="M11 3.2C5.5 2.6 3.6 9 6.4 13.4 6.2 9.6 8.4 7.4 11.2 6.8z" fill="#3a2a1f"/></g>
+          <!-- back arm -->
+          <g class="arm" style="transform-origin:13px 13px"><line x1="13" y1="13" x2="13" y2="22" stroke="#222f47" stroke-width="2.8" stroke-linecap="round"/></g>
+          <!-- legs -->
+          <g class="leg a" style="transform-origin:13px 22px"><line x1="13" y1="22" x2="13" y2="33" stroke="#d9ac86" stroke-width="2.8" stroke-linecap="round"/><line x1="13" y1="34.4" x2="16.6" y2="34.4" stroke="#3a2a1f" stroke-width="2.4" stroke-linecap="round"/></g>
+          <g class="leg b" style="transform-origin:13px 22px"><line x1="13" y1="22" x2="13" y2="33" stroke="#e8bd98" stroke-width="2.8" stroke-linecap="round"/><line x1="13" y1="34.4" x2="16.6" y2="34.4" stroke="#3a2a1f" stroke-width="2.4" stroke-linecap="round"/></g>
+          <!-- skirt -->
+          <path d="M9.4 20.5h7.2l2.4 7.5H7z" fill="#2b3a55"/>
+          <!-- torso (leans forward a little) -->
+          <rect x="9.6" y="10" width="7" height="12" rx="3" fill="#2f5d8a" transform="rotate(6 13 22)"/>
+          <path d="M14.4 10.8l1.4 3.6 1.2-3z" fill="#f4e8c8" transform="rotate(6 13 22)"/>
+          <!-- head -->
+          <circle cx="14.5" cy="6" r="4.2" fill="#f1c9a5"/>
+          <path d="M10.2 6.4C9.6 2.4 12.6.9 15.4 1.6c2.4.6 3.6 2.4 3.4 4.2-1.2-1.7-3-2.4-5.2-1.8-1.5.4-2.7 1.4-3.4 2.4z" fill="#3a2a1f"/>
+          <path d="M10.4 6c-.4 2.6.2 4.6 1.4 5.6.1-1.8-.2-3.6-1.4-5.6z" fill="#3a2a1f"/>
+          <!-- front arm + tote bag -->
+          <g class="arm" style="transform-origin:13px 13px"><line x1="13" y1="13" x2="13" y2="22" stroke="#2f5d8a" stroke-width="2.8" stroke-linecap="round"/><path d="M10.4 21.2c0-2.2 5.2-2.2 5.2 0" fill="none" stroke="#5c3a18" stroke-width="1"/><path d="M9.4 22.6h7.6l-.9 6.4h-5.8z" fill="#b9814a"/></g>
+        </svg>
+      </div>
+    </div>
+    <div class="node end"><span class="t">08:40</span><span class="l">Go to work</span></div>
+  </div>
+
+  <div class="action" aria-live="polite">
+    <button class="accept" id="accept" type="button">☕ 출근 전에 보자</button>
+    <div class="done">
+      <p>접수 완료!<br>10/30 금요일 8시, 아티제에서 봬요 ☕</p>
+      <small>08:40엔 다시 도비 요정으로...🧚‍♀️</small>
+      <button class="share" id="share" type="button">카톡으로 한마디 남기기</button>
+    </div>
+  </div>
+
+  <p class="bye">See you before work. ☕</p>
+</main>
+
+<script>
+  const card = document.getElementById('card');
+  const accept = document.getElementById('accept');
+  const share = document.getElementById('share');
+
+  const runner = document.getElementById('runner');
+  accept.addEventListener('click', () => {
+    card.classList.add('accepted');
+    card.classList.add('walking');
+    setTimeout(() => card.classList.remove('walking'), 1800);
+  });
+
+  // 카톡 공유 창을 열어서 초대한 사람에게 한마디 보낼 수 있게 해요 (알림 서버 없이 가능)
+  share.addEventListener('click', async () => {
+    const text = '☕ 출근 전에 보자! 10/30(금) 오전 8시, 을지로입구 아티제 — 수락했어요.';
+    try {
+      if (navigator.share) {
+        await navigator.share({ text });
+        return;
+      }
+    } catch (e) { return; }
+    try {
+      await navigator.clipboard.writeText(text);
+      share.textContent = '복사됐어요! 카톡에 붙여넣기 ✔';
+    } catch (e) {
+      share.textContent = '카톡으로 "갈게!" 한마디 부탁해요';
+    }
+  });
+</script>
+</body>
+</html>
